@@ -83,7 +83,7 @@ export default function RootLayout({
               "name": "Vishal Kanojiya",
               "jobTitle": "Front-End Developer",
               "description": "Front-End Developer with 2+ years of experience building responsive and high-performance web applications",
-              "url": "https://vishal-kanojiya.vercel.app",
+              "url": "https://kanojiya-s-dev.vercel.app/",
               "sameAs": [
                 "https://github.com/kanojiya9768",
                 "https://linkedin.com/in/vishal-kanojiya"
