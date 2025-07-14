@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
+import { ThemeProvider } from 'next-themes';
 import { Inter } from 'next/font/google';
-import { ThemeProvider } from '@/components/providers/theme-provider';
 import {Toaster} from 'react-hot-toast'
 const inter = Inter({ subsets: ['latin'] });
 
