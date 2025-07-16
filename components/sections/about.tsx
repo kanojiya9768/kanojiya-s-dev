@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, GraduationCap, MapPin } from "lucide-react";
+import { Calendar, GraduationCap, MapPin, Award, Target, Heart } from "lucide-react";
 
 export function About() {
   const aboutRef = useRef<HTMLDivElement>(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -48,12 +49,36 @@ export function About() {
     }
   ];
 
+  const highlights = [
+    {
+      icon: Award,
+      title: "Quality Focused",
+      description: "Committed to delivering high-quality, maintainable code"
+    },
+    {
+      icon: Target,
+      title: "Goal Oriented",
+      description: "Always focused on achieving project objectives efficiently"
+    },
+    {
+      icon: Heart,
+      title: "Passionate",
+      description: "Genuinely passionate about creating amazing web experiences"
+    }
+  ];
+
   return (
-    <section id="about" className="py-20 bg-white dark:bg-gray-900">
+    <section id="about" className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 right-20 w-64 h-64 bg-blue-400/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-64 h-64 bg-purple-400/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           ref={aboutRef}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className="opacity-0 translate-y-8 transition-all duration-700 relative z-10"
         >
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -62,7 +87,7 @@ export function About() {
             <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* About Content */}
             <div className="space-y-6">
               <div className="space-y-4">
@@ -70,18 +95,18 @@ export function About() {
                   Passionate Front-End Developer
                 </h3>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  I'm a Front-End Developer with 2+ years of experience building responsive 
-                  and high-performance web applications. I focus on creating clean, scalable 
-                  UI with strong attention to detail.
+                  I'm a Front-End Developer with 2+ years of experience building responsive and 
+                  high-performance web applications. I specialize in React.js, Next.js, and modern 
+                  web technologies, focusing on creating clean, scalable UI with strong attention to detail.
                 </p>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  I also have working knowledge of backend tools like Node.js, Express.js, 
-                  and MongoDB, allowing me to collaborate across the full stack. Passionate 
-                  about clean code and continuous learning.
+                  Beyond frontend development, I have solid experience with backend technologies 
+                  including Node.js, Express.js, and MongoDB. This full-stack knowledge allows me 
+                  to build complete web solutions and collaborate effectively across all layers of development.
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-3">
                 <Badge variant="secondary" className="text-sm">
                   2+ Years Experience
                 </Badge>
@@ -91,6 +116,24 @@ export function About() {
                 <Badge variant="secondary" className="text-sm">
                   Clean Code Advocate
                 </Badge>
+              </div>
+
+              {/* Highlights */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                {highlights.map((highlight, index) => (
+                  <div 
+                    key={index}
+                    className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all duration-300 transform hover:-translate-y-1 group"
+                  >
+                    <highlight.icon className="h-6 w-6 text-blue-600 dark:text-blue-400 mb-2 group-hover:scale-110 transition-transform duration-300" />
+                    <h4 className="font-semibold text-gray-900 dark:text-white text-sm mb-1">
+                      {highlight.title}
+                    </h4>
+                    <p className="text-xs text-gray-600 dark:text-gray-300">
+                      {highlight.description}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -102,9 +145,16 @@ export function About() {
               
               <div className="space-y-4">
                 {education.map((edu, index) => (
-                  <Card key={index} className="border-l-4 border-l-blue-500 hover:shadow-lg transition-shadow">
-                    <CardContent className="p-4">
-                      <div className="flex items-start justify-between">
+                  <Card 
+                    key={index}
+                    className="p-6 hover:shadow-lg transition-all duration-300 border-l-4 border-blue-500"
+                    onMouseEnter={() => setHoveredCard(index)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                  >
+                    <CardContent className="p-0">
+                      <div className={`flex items-start justify-between transition-all duration-300 ${
+                        hoveredCard === index ? 'transform translate-x-2' : ''
+                      }`}>
                         <div className="flex-1">
                           <h4 className="font-semibold text-gray-900 dark:text-white">
                             {edu.degree}
@@ -123,7 +173,7 @@ export function About() {
                             </div>
                           </div>
                         </div>
-                        <GraduationCap className="h-6 w-6 text-blue-500 flex-shrink-0" />
+                        <GraduationCap className={`h-6 w-6 text-blue-500 flex-shrink-0 transition-transform duration-300 ${hoveredCard === index ? 'scale-110 rotate-12' : ''}`} />
                       </div>
                     </CardContent>
                   </Card>

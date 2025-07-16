@@ -46,13 +46,14 @@ export function Hero() {
         <div className="text-center space-y-8">
           {/* Profile Image */}
           <div className="translate-y-8 transition-all duration-700 delay-200 hero-image">
-            <div className="relative mx-auto w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mb-8">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full animate-spin-slow"></div>
-              <div className="absolute inset-2 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center">
-                <div className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-2xl sm:text-3xl lg:text-4xl font-bold">
-                  <img src="/img/profile.png" alt="profile" className="w-full h-full rounded-full" />
+            <div className="relative mx-auto w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 mb-8 group">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-full animate-spin-slow group-hover:animate-pulse"></div>
+              <div className="absolute inset-2 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center shadow-2xl">
+                <div className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 bg-gradient-to-br from-blue-500 via-purple-600 to-indigo-600 rounded-full flex items-center justify-center text-white text-2xl sm:text-3xl lg:text-4xl font-bold overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                  <img src="/img/profile.png" alt="Vishal Kanojiya" className="w-full h-full rounded-full object-cover" />
                 </div>
               </div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-indigo-600/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           </div>
 
@@ -130,20 +131,20 @@ export function Hero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl group"
+                className="bg-gradient-to-r w-[80%] sm:w-52 from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl group"
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <Eye className="mr-2 h-5 w-5 group-hover:rotate-12 transition-transform" />
+                <Eye className="mr-2 h-5 w-5 shrink-0 group-hover:rotate-12 transition-transform" />
                 View My Work
               </Button>
               
               <Button
                 size="lg"
                 variant="outline"
-                className="px-8 py-4 rounded-full font-semibold border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group"
+                className="px-8 py-4 w-[80%] sm:w-52 rounded-full font-semibold border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group"
                 onClick={() => window.open('/resume.pdf', '_blank')}
               >
-                <Download className="mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+                <Download className="mr-2 h-5 w-5 shrink-0 group-hover:translate-y-1 transition-transform" />
                 Download Resume
               </Button>
             </div>

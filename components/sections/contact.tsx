@@ -192,13 +192,13 @@ export function Contact() {
                   Current Status
                 </h3>
                 <div className="space-y-3 space-x-2">
-                  <Badge className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                  <Badge className="bg-green-100 sm:py-2 text-green-800 dark:bg-green-900 dark:text-green-200">
                     Available for New Projects
                   </Badge>
-                  <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
+                  <Badge className="bg-blue-100 sm:py-2 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
                     Remote Work Friendly
                   </Badge>
-                  <Badge className="bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
+                  <Badge className="bg-purple-100 sm:py-2 text-purple-800 dark:bg-purple-900 dark:text-purple-200">
                     Fast Response Time
                   </Badge>
                 </div>

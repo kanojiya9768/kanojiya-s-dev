@@ -1,5 +1,7 @@
 "use client";
+
 import { Github, Linkedin, Mail, Phone, MapPin, Heart } from "lucide-react";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -23,10 +25,12 @@ export function Footer() {
 
   const quickLinks = [
     { name: "Home", href: "#home" },
+    { name: "Stats", href: "#stats" },
+    { name: "Projects", href: "#projects" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
+    { name: "Services", href: "#services" },
     { name: "Contact", href: "#contact" },
   ];
 

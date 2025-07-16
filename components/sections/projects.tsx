@@ -34,11 +34,10 @@ export function Projects() {
     return () => observer.disconnect();
   }, []);
 
-  const filteredProjects = projects.filter(project => {
-    const categoryMatch = selectedCategory === "All" || project.category === selectedCategory;
-    const yearMatch = selectedYear === "All" || project.year === selectedYear;
-    return categoryMatch && yearMatch;
-  });
+  const filteredProjects = projects.filter(project => 
+    (selectedCategory === "All" || project.category === selectedCategory) &&
+    (selectedYear === "All" || project.year === selectedYear)
+  );
 
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
@@ -66,7 +65,6 @@ export function Projects() {
                   Filter Projects
                 </span>
               </div>
-              
               <Button
                 variant="outline"
                 size="sm"
@@ -79,7 +77,6 @@ export function Projects() {
 
             <div className={`${showFilters ? 'block' : 'hidden'} sm:block mt-4`}>
               <div className="flex flex-col sm:flex-row gap-4">
-                {/* Category Dropdown */}
                 <div className="relative">
                   <Button
                     variant="outline"
@@ -109,7 +106,6 @@ export function Projects() {
                   </div>
                 </div>
 
-                {/* Year Dropdown */}
                 <div className="relative">
                   <Button
                     variant="outline"
@@ -144,17 +140,17 @@ export function Projects() {
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
+            {filteredProjects.map(project => (
               <Card 
                 key={project.id} 
-                className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+                className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col h-[520px]"
               >
                 <div className="aspect-video bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center relative overflow-hidden">
                   {project.image ? (
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
                     />
                   ) : (
                     <div className="text-6xl font-bold text-gray-300 dark:text-gray-600">
@@ -174,13 +170,13 @@ export function Projects() {
                   )}
                 </div>
                 
-                <CardContent className="p-6">
+                <CardContent className="p-6 flex flex-col flex-grow">
                   <div className="flex items-center justify-between mb-2">
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 transition-colors">
                       {project.title}
                     </h3>
-                    <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                      <span>{project.year}</span>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                      {project.year}
                     </div>
                   </div>
                   
@@ -188,7 +184,7 @@ export function Projects() {
                     {project.category}
                   </Badge>
                   
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">
                     {project.description}
                   </p>
                   
@@ -209,7 +205,7 @@ export function Projects() {
                     )}
                   </div>
                   
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 mt-auto">
                     <Button
                       size="sm"
                       className="flex-1"
@@ -218,7 +214,6 @@ export function Projects() {
                       <ExternalLink className="h-4 w-4 mr-2" />
                       Live Demo
                     </Button>
-                    
                     {project.githubLink && (
                       <Button
                         size="sm"

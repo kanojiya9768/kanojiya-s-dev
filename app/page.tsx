@@ -1,9 +1,12 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Hero } from "@/components/sections/hero";
+import { Stats } from "@/components/sections/stats";
 import { About } from "@/components/sections/about";
 import { Skills } from "@/components/sections/skills";
 import { Experience } from "@/components/sections/experience";
 import { Projects } from "@/components/sections/projects";
+import { Services } from "@/components/sections/services";
+import { Testimonials } from "@/components/sections/testimonials";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/layout/footer";
 
@@ -13,10 +16,13 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Stats />
+        <Projects />
         <About />
         <Skills />
         <Experience />
-        <Projects />
+        <Services />
+        <Testimonials />
         <Contact />
       </main>
       <Footer />

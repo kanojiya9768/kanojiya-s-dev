@@ -7,10 +7,12 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navItems = [
   { name: "Home", href: "#home" },
+  { name: "Stats", href: "#stats" },
+  { name: "Projects", href: "#projects" },
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
   { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
+  { name: "Services", href: "#services" },
   { name: "Contact", href: "#contact" },
 ];
 
